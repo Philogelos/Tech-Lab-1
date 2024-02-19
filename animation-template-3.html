@@ -1,0 +1,101 @@
+<!-- HTML generated using hilite.me --><div style="background: #272822; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+    2
+    3
+    4
+    5
+    6
+    7
+    8
+    9
+   10
+   11
+   12
+   13
+   14
+   15
+   16
+   17
+   18
+   19
+   20
+   21
+   22
+   23
+   24
+   25
+   26
+   27
+   28
+   29
+   30
+   31
+   32
+   33
+   34
+   35
+   36
+   37
+   38
+   39
+   40
+   41
+   42
+   43
+   44
+   45
+   46
+   47
+   48
+   49
+   50</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #f92672">&lt;</span><span style="color: #a6e22e">html</span><span style="color: #f92672">&gt;</span>
+      <span style="color: #f92672">&lt;</span><span style="color: #a6e22e">canvas</span> <span style="color: #a6e22e">id</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;can&quot;</span> <span style="color: #a6e22e">width</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;800&quot;</span> <span style="color: #a6e22e">height</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;500&quot;</span> <span style="color: #a6e22e">style</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;border: 11px solid black;&quot;</span><span style="color: #f92672">&gt;&lt;</span><span style="color: #960050; background-color: #1e0010">/canvas&gt; </span>
+      <span style="color: #f92672">&lt;</span><span style="color: #a6e22e">script</span><span style="color: #f92672">&gt;</span>
+          <span style="color: #66d9ef">let</span> <span style="color: #a6e22e">c</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">document.</span><span style="color: #a6e22e">getElementById</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&quot;can&quot;</span><span style="color: #f8f8f2">)</span>
+          <span style="color: #66d9ef">let</span> <span style="color: #a6e22e">ctx</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">c</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">getContext</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&quot;2d&quot;</span><span style="color: #f8f8f2">)</span>
+   
+          <span style="color: #66d9ef">let</span> <span style="color: #a6e22e">image</span> <span style="color: #f92672">=</span> <span style="color: #66d9ef">new</span> <span style="color: #a6e22e">Image</span><span style="color: #f8f8f2">()</span>
+          <span style="color: #a6e22e">image</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">src</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&quot;explosion-spritesheet.png&quot;</span>
+   
+       <span style="color: #66d9ef">let</span> <span style="color: #a6e22e">spriteSheetWidth</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">image</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">width</span>
+       <span style="color: #66d9ef">let</span> <span style="color: #a6e22e">spriteSheetHeight</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">image</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">height</span>
+   
+       <span style="color: #66d9ef">let</span> <span style="color: #a6e22e">numberCols</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">10</span>
+       <span style="color: #66d9ef">let</span> <span style="color: #a6e22e">numberRows</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">5</span>
+       <span style="color: #66d9ef">let</span> <span style="color: #a6e22e">lastRowFrames</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">7</span> <span style="color: #75715e">//number of frames on last row</span>
+   
+   
+          <span style="color: #66d9ef">let</span> <span style="color: #a6e22e">frameWidth</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">spriteSheetWidth</span><span style="color: #f92672">/</span><span style="color: #a6e22e">numberCols</span>   <span style="color: #75715e">//width of spritesheet divided by the number of columns</span>
+          <span style="color: #66d9ef">let</span> <span style="color: #a6e22e">frameHeight</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">spriteSheetHeight</span><span style="color: #f92672">/</span><span style="color: #a6e22e">numberRows</span>   <span style="color: #75715e">//height of spritesheet divided by the number of rows</span>
+          <span style="color: #66d9ef">let</span> <span style="color: #a6e22e">col</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">0</span>
+          <span style="color: #66d9ef">let</span> <span style="color: #a6e22e">row</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">0</span>
+          <span style="color: #66d9ef">let</span> <span style="color: #a6e22e">time</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">0</span>
+   
+       <span style="color: #66d9ef">let</span> <span style="color: #a6e22e">frameDelay</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">6</span> <span style="color: #75715e">// how many screen-refresh frames to show each sprite-sheet frame</span>
+       
+          <span style="color: #66d9ef">function</span> <span style="color: #a6e22e">draw</span><span style="color: #f8f8f2">(){</span>
+              <span style="color: #a6e22e">ctx</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">clearRect</span><span style="color: #f8f8f2">(</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">,</span> <span style="color: #a6e22e">c</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">width</span><span style="color: #f8f8f2">,</span> <span style="color: #a6e22e">c</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">height</span><span style="color: #f8f8f2">)</span>
+              <span style="color: #a6e22e">time</span><span style="color: #f92672">++</span>
+              <span style="color: #66d9ef">if</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">time</span> <span style="color: #f92672">&gt;</span> <span style="color: #a6e22e">frameDelay</span><span style="color: #f8f8f2">){</span> 
+                  <span style="color: #a6e22e">col</span><span style="color: #f92672">++</span>
+                  <span style="color: #a6e22e">time</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">0</span>
+              <span style="color: #f8f8f2">}</span>
+              <span style="color: #66d9ef">if</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">col</span> <span style="color: #f92672">&gt;</span> <span style="color: #a6e22e">numberCols</span><span style="color: #f92672">-</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">){</span>  <span style="color: #75715e">//-1 since we start at col 0</span>
+                  <span style="color: #a6e22e">col</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">0</span>
+               <span style="color: #a6e22e">row</span><span style="color: #f92672">++</span>
+           <span style="color: #f8f8f2">}</span>
+           <span style="color: #66d9ef">if</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">row</span> <span style="color: #f92672">==</span> <span style="color: #a6e22e">numberRows</span><span style="color: #f92672">-</span><span style="color: #ae81ff">1</span> <span style="color: #f92672">&amp;&amp;</span> <span style="color: #a6e22e">col</span> <span style="color: #f92672">==</span> <span style="color: #a6e22e">lastRowFrames</span><span style="color: #f8f8f2">){</span>  
+                  <span style="color: #a6e22e">col</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">0</span>
+               <span style="color: #a6e22e">row</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">0</span>
+           <span style="color: #f8f8f2">}</span>
+              
+           <span style="color: #a6e22e">ctx</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">drawImage</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">image</span><span style="color: #f8f8f2">,</span> <span style="color: #a6e22e">col</span><span style="color: #f92672">*</span><span style="color: #a6e22e">frameWidth</span><span style="color: #f8f8f2">,</span> <span style="color: #a6e22e">row</span><span style="color: #f92672">*</span><span style="color: #a6e22e">frameHeight</span><span style="color: #f8f8f2">,</span> <span style="color: #a6e22e">frameWidth</span><span style="color: #f8f8f2">,</span> <span style="color: #a6e22e">frameHeight</span><span style="color: #f8f8f2">,</span>
+                      <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">,</span> <span style="color: #a6e22e">frameWidth</span><span style="color: #f8f8f2">,</span> <span style="color: #a6e22e">frameHeight</span><span style="color: #f8f8f2">)</span>
+   
+              <span style="color: #a6e22e">requestAnimationFrame</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">draw</span><span style="color: #f8f8f2">)</span>
+          <span style="color: #f8f8f2">}</span>
+          <span style="color: #a6e22e">draw</span><span style="color: #f8f8f2">()</span>  	
+   
+      <span style="color: #f92672">&lt;</span><span style="color: #960050; background-color: #1e0010">/script&gt;</span>
+   <span style="color: #f92672">&lt;</span><span style="color: #960050; background-color: #1e0010">/html&gt;</span>
+   </pre></td></tr></table></div>
+   
