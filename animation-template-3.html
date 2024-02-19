@@ -56,12 +56,12 @@
           <span style="color: #66d9ef">let</span> <span style="color: #a6e22e">image</span> <span style="color: #f92672">=</span> <span style="color: #66d9ef">new</span> <span style="color: #a6e22e">Image</span><span style="color: #f8f8f2">()</span>
           <span style="color: #a6e22e">image</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">src</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&quot;explosion-spritesheet.png&quot;</span>
    
-       <span style="color: #66d9ef">let</span> <span style="color: #a6e22e">spriteSheetWidth</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">image</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">width</span>
-       <span style="color: #66d9ef">let</span> <span style="color: #a6e22e">spriteSheetHeight</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">image</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">height</span>
+          <span style="color: #66d9ef">let</span> <span style="color: #a6e22e">spriteSheetWidth</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">image</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">width</span>
+          <span style="color: #66d9ef">let</span> <span style="color: #a6e22e">spriteSheetHeight</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">image</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">height</span>
    
-       <span style="color: #66d9ef">let</span> <span style="color: #a6e22e">numberCols</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">10</span>
-       <span style="color: #66d9ef">let</span> <span style="color: #a6e22e">numberRows</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">5</span>
-       <span style="color: #66d9ef">let</span> <span style="color: #a6e22e">lastRowFrames</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">7</span> <span style="color: #75715e">//number of frames on last row</span>
+          <span style="color: #66d9ef">let</span> <span style="color: #a6e22e">numberCols</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">10</span>
+          <span style="color: #66d9ef">let</span> <span style="color: #a6e22e">numberRows</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">5</span>
+          <span style="color: #66d9ef">let</span> <span style="color: #a6e22e">lastRowFrames</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">7</span> <span style="color: #75715e">//number of frames on last row</span>
    
    
           <span style="color: #66d9ef">let</span> <span style="color: #a6e22e">frameWidth</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">spriteSheetWidth</span><span style="color: #f92672">/</span><span style="color: #a6e22e">numberCols</span>   <span style="color: #75715e">//width of spritesheet divided by the number of columns</span>
@@ -70,7 +70,7 @@
           <span style="color: #66d9ef">let</span> <span style="color: #a6e22e">row</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">0</span>
           <span style="color: #66d9ef">let</span> <span style="color: #a6e22e">time</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">0</span>
    
-       <span style="color: #66d9ef">let</span> <span style="color: #a6e22e">frameDelay</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">6</span> <span style="color: #75715e">// how many screen-refresh frames to show each sprite-sheet frame</span>
+          <span style="color: #66d9ef">let</span> <span style="color: #a6e22e">frameDelay</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">6</span> <span style="color: #75715e">// how many screen-refresh frames to show each sprite-sheet frame</span>
        
           <span style="color: #66d9ef">function</span> <span style="color: #a6e22e">draw</span><span style="color: #f8f8f2">(){</span>
               <span style="color: #a6e22e">ctx</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">clearRect</span><span style="color: #f8f8f2">(</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">,</span> <span style="color: #a6e22e">c</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">width</span><span style="color: #f8f8f2">,</span> <span style="color: #a6e22e">c</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">height</span><span style="color: #f8f8f2">)</span>
