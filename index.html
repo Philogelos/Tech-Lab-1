@@ -23,6 +23,24 @@
       background-color: #f1f1f1;
       height: 100%;
     }
+    .container {
+	  position: relative;
+	  text-align: center;
+	  color: white;
+    }
+	
+    .bottom-left {
+	  position: absolute;
+	  bottom: 8px;
+	  left: 16px;
+    }
+	
+    .top-left {
+	  position: absolute;
+	  top: 8px;
+	  left: 16px;
+    }
+
     .bg {
 	  /* The image used */
 	  background-image: url("under-construction-page-2.jpg");
@@ -174,6 +192,15 @@
 </pre></td></tr></table></div>
 
 <!-- 	    <img id="under-construction" src="under-construction-page-2.jpg"> -->
+<div id="under-construction" class="container">
+  <img src="under-construction-page-2.jpg" alt="Ooops! Site under construction." style="width:100%;">
+<!--   <div class="bottom-left">Bottom Left</div> -->
+  <div class="top-left">Ooops! The site is under construction.</div>
+<!--   <div class="top-right">Top Right</div>
+  <div class="bottom-right">Bottom Right</div>
+  <div class="centered">Centered</div> -->
+</div>
+
 	    
 <div class="bg"><img src="under-construction-page-2.jpg"><p><a href="#myNavbar">Back to top</a></p></img></div>
 
