@@ -8,6 +8,15 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+   <script>
+      $(function() {
+         $("#animation-template-1").load("animation-template-1-row.html");
+	 $("#animation-template-2").load("animation-template-2.html");
+	 $("#animation-template-3").load("animation-template-3.html");    
+	// <div id="animation-template-1"></div> 
+      });
+   </script>
   <style>
     /* Remove the navbar's default margin-bottom and rounded borders */ 
     .navbar {
@@ -121,6 +130,12 @@
       <p>We have here three basic animation scripts: 
         Single row sprite sheets, multiple row sprite sheets, 
         and multiple row sprite-sheets where the last row has fewer columns than the other rows.</p>
+	    <div id="animation-template-1"></div> 
+	    <div id="animation-template-2"></div> 
+	    <div id="animation-template-3"></div> 
+
+
+	    
       <!-- HTML generated using hilite.me --><div style="background: #272822; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
  2
  3
