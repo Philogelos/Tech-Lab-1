@@ -136,7 +136,10 @@
         Single row sprite sheets, multiple row sprite sheets, 
         and multiple row sprite-sheets where the last row has fewer columns than the other rows.</p>
 	    <h4>Sprite-sheet with only one row</h4>
-	    <div id="animation-template-1"></div> 
+	    <div id="animation-template-1"></div>
+	    <button onclick="copyToClip(document.getElementById('foo').innerHTML)">
+		  Copy code 1
+	    </button>
 	    <img id="pikachu" src="pikachu.png" width="30%" height="30%">
 	    <a href="pikachu.png" download="pikachu-spritesheet">
 	        <button type="button">Download</button>
@@ -197,6 +200,19 @@
 </div>
 	
 <!-- <img src="under-construction-page-2.jpg"></img> -->
+<script>
+	function copyToClip(str) {
+	  function listener(e) {
+	    e.clipboardData.setData("text/html", str);
+	    e.clipboardData.setData("text/plain", str);
+	    e.preventDefault();
+	  }
+	  document.addEventListener("copy", listener);
+	  document.execCommand("copy");
+	  document.removeEventListener("copy", listener);
+	};
+
+</script>
 	
   
 
