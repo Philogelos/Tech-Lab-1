@@ -1,0 +1,262 @@
+<html>
+    <h1 id="header">Sushi Platformer</h1>
+    <p id="mouse-position">Mouse position: x: 0; y: 0</p>
+    <!-- <button id="del" onclick="deleteAsset()">delete</button>
+    <label for="#del">delete a rectangle</label>
+    -->
+    <div id="trigger">Copy x</div>
+    <div id="triggerY">Copy y</div>
+
+
+    <canvas id="can" width="1000" height="800" style="border: 5px solid aqua;"></canvas>
+    <p id="platform-x">Platform x</p>
+    <p id="platform-y">Platform y</p>
+    <table id="myTable"> 
+        <thead> 
+          <tr> 
+            <th>#</th> 
+            <th>X</th> 
+            <th>Y</th> 
+          </tr> 
+        </thead> 
+        <tbody id="tableBody"> 
+          <!-- Data will be inserted here --> 
+        </tbody> 
+      </table> 
+      <!-- <div id="trigger">Copy x</div>
+      <div id="triggerY">Copy y</div> -->
+
+      <textarea name="clipboardTextarea" id="clipboardTextarea"></textarea>
+      
+    <style>
+        p{
+            margin-top:0px; 
+            margin-left:1050px;
+            /* user-select:  text !important;
+            z-index: 111; */
+        }
+        canvas{
+            position: absolute;
+            left: 0px;
+            top: 100px;
+            cursor: none;
+        }
+        table,
+        th,
+        td {
+            margin-top:10px; 
+            margin-left:1050px; 
+            top: 800px;
+            padding: 10px;
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        #clipboardTextarea {
+            overflow: hidden;
+            max-height: 0px;
+            max-width: 0px;
+            resize: none;
+            border: none;
+            position: absolute;
+            bottom: 0px;
+            right: 0px;
+            z-index: -10;
+        }
+        #clipboardTextarea:focus {
+            outline: none;
+        }
+
+        /*simple demo styles*/
+        #trigger, #triggerY, #del {
+            margin-top:10px; 
+            margin-left:1050px;
+            padding: 1em;
+            background-color: green;
+            display: inline-block;
+            border-radius: 10px;
+            color: white;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        #trigger:hover {
+            cursor: pointer;
+        }
+        h1 {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+    </style>
+    <script>
+        let c = document.getElementById("can")
+        let ctx = c.getContext("2d")
+        let tableBody = document.getElementById("tableBody"); 
+        let element = document.querySelector('#can');
+
+        let deleting = false
+
+
+        let sush = {
+            x: 0,
+            y: 0,
+            w: 50,
+            h: 50,
+            speed: 14,
+            gravity: 4
+
+        }
+        let mouseMove = {
+            x: 0,
+            y: 0
+        }
+        let mouseClick = {
+            x: 0,
+            y: 0
+        }
+        let platformsX = []
+        let platformsY = []
+        function controlAsset(e){
+            if(e.key=="ArrowUp"){
+                sush.y-=sush.speed //sush.y = sush.y - sush.speed
+                sush.gravity = 4
+            }
+            if(e.key=="ArrowDown"){
+                sush.y+=sush.speed //sush.y = sush.y - sush.speed
+            }
+            if(e.key=="ArrowRight"){
+                sush.y-=sush.speed //sush.y = sush.y - sush.speed
+                sush.gravity = 4
+            }
+            if(e.key=="ArrowLeft"){
+                sush.y+=sush.speed //sush.y = sush.y - sush.speed
+            }
+        }
+        function moveAsset(e){           
+            mouseMove.x = e.clientX-5 //the border is 5 pixels thick
+            mouseMove.y = e.clientY-100-5
+            document.getElementById("mouse-position").innerText = "Mouse position: x: "+mouseMove.x+"; y: "+mouseMove.y
+        }
+        // placeAsset
+        let i = 0
+        function placeAsset(e){           
+            // if(mouseMove.x > 0 && mouseMove.x < 1010 &&
+            //     mouseMove.y > 100 && mouseMove.y < 920){
+                if(deleting){
+                    console.log("deleting...")
+                    if(mouseMove.x >= platformsX[i] && mouseMove.x <= platformsX[i] + 100 &&
+                    mouseMove.y >= platformsY[i]  && mouseMove.y <= platformsY[i] + 30){
+                        platformsX.slice(i, 1)
+                        platformsY.slice(i, 1)
+                    }
+
+                }
+                else{
+                    platformsX.push(mouseMove.x) 
+                    platformsY.push(mouseMove.y)
+                    let row = document.createElement("tr"); 
+        
+                    let arrayNumCell = document.createElement("td"); 
+                    arrayNumCell.textContent = i 
+                    row.appendChild(arrayNumCell); 
+
+                    let platformXCell = document.createElement("td"); 
+                    platformXCell.textContent = mouseMove.x
+                    row.appendChild(platformXCell); 
+
+                    let platformYCell = document.createElement("td"); 
+                    platformYCell.textContent = mouseMove.y
+                    row.appendChild(platformYCell); 
+
+                    tableBody.appendChild(row); 
+                    i++    
+            // }
+                }
+                
+        }
+        function deleteAsset(){
+            deleting = true
+            // canvas.style.cursor = "grab"
+            for(let i = 0; i < platformsX.length; i++){
+                if(mouseMove.x >= platformsX[i] && mouseMove.x <= platformsX[i] + 100 &&
+                    mouseMove.y >= platformsY[i]  && mouseMove.y <= platformsY[i] + 30){
+                        platformsX.slice(i, 1)
+                        platformsY.slice(i, 1)
+                }
+            }
+        }
+
+        function draw(){
+            ctx.clearRect(0, 0, c.width, c.height)
+            document.getElementById("platform-x").innerText = "Platforms: x: " + platformsX
+            document.getElementById("platform-y").innerText = "Platforms: y: " + platformsY
+            for(let i = 0; i < platformsX.length; i++){
+                ctx.fillStyle = "black"
+
+                ctx.fillRect(platformsX[i], platformsY[i], 100, 30)//platforms using data in platforms arrays
+            
+            }           
+            if(!deleting){
+                ctx.fillRect(mouseMove.x, mouseMove.y, 100, 30)//rectangle appears at mouse
+            }
+            else{
+                ctx.fillStyle = "red"
+                ctx.fillRect(mouseMove.x, mouseMove.y, 5, 5)//rectangle appears at mouse
+                deleteAsset()
+
+            }
+
+            requestAnimationFrame(draw)
+        }
+        draw()
+        document.addEventListener("keydown", controlAsset)
+        c.addEventListener("mousemove", moveAsset)
+        c.addEventListener("click", placeAsset)
+
+
+let myTarget = document.getElementById("clipboardTextarea");
+
+function createListOutputX() {
+  console.log('output fired')
+  let myListOutput = platformsX.toString()
+//   for (var i = 0; i < myList.length; i++) {
+//     //check if list is NOT the last in the array, if last don't output a line break
+//     if (i != myList.length - 1) {
+//       let lineItem = myList[i] + "\n";
+//       myListOutput = myListOutput + lineItem;
+//     } else {
+//       let lineItem = myList[i];
+//       myListOutput = myListOutput + lineItem;
+//     }
+//   }
+  myTarget.value = myListOutput;
+  myTarget.select();
+  myTarget.setSelectionRange(0, 99999); //for mobile
+  document.execCommand("copy");
+  console.log("Copied to clipboard"); //could respond with some visual feedback to user
+  alert("Copied to clipboard");
+}
+function createListOutputY() {
+  console.log('output fired')
+  let myListOutput = platformsY.toString()
+//   for (var i = 0; i < myList.length; i++) {
+//     //check if list is NOT the last in the array, if last don't output a line break
+//     if (i != myList.length - 1) {
+//       let lineItem = myList[i] + "\n";
+//       myListOutput = myListOutput + lineItem;
+//     } else {
+//       let lineItem = myList[i];
+//       myListOutput = myListOutput + lineItem;
+//     }
+//   }
+  myTarget.value = myListOutput;
+  myTarget.select();
+  myTarget.setSelectionRange(0, 99999); //for mobile
+  document.execCommand("copy");
+  console.log("Copied to clipboard"); //could respond with some visual feedback to user
+  alert("Copied to clipboard");
+}
+
+document.getElementById("trigger").addEventListener("click", createListOutputX, false); //triggerX
+document.getElementById("triggerY").addEventListener("click", createListOutputY, false); //triggerY
+
+</script>
+</html>
