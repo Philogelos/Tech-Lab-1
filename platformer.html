@@ -1,6 +1,12 @@
 <html>
     <h1 id="header">Sushi Platformer</h1>
     <canvas id="can" width="1000" height="800" style="border: 5px solid aqua;"></canvas>
+    <div id="week-1"></div>
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script>
+      $(function() {
+         $("#week-1").load("Platformer-code-week-1.html");	
+      });
     <script>
         let c = document.getElementById("can")
         let ctx = c.getContext("2d")
