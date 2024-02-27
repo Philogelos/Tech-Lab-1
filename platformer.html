@@ -1,0 +1,50 @@
+<html>
+    <h1 id="header">Sushi Platformer</h1>
+    <canvas id="can" width="1000" height="800" style="border: 5px solid aqua;"></canvas>
+    <script>
+        let c = document.getElementById("can")
+        let ctx = c.getContext("2d")
+
+        let sush = {
+            x: 0,
+            y: 0,
+            w: 50,
+            h: 50,
+            speed: 14,
+            gravity: 4
+
+        }
+        function move(e){
+            if(e.key=="w"){
+                sush.y-=sush.speed //sush.y = sush.y - sush.speed
+                sush.gravity = 4
+            }
+            if(e.key=="s"){
+                sush.y+=sush.speed //sush.y = sush.y - sush.speed
+            }
+        }
+
+        function draw(){
+            ctx.clearRect(0, 0, c.width, c.height)
+            sush.y+=sush.gravity
+            if(sush.y > c.height-sush.h-50){
+                sush.gravity = 0
+            }
+            //sea
+            ctx.fillStyle = "blue"
+            ctx.fillRect(0, 30, c.width, c.height) //sea
+            //platforms
+            ctx.fillStyle = "red"
+            ctx.fillRect(100, c.height-125, 100, 30)
+            //sushi guy
+            ctx.fillStyle = "brown"
+            ctx.fillRect(sush.x, sush.y, 50, 50)
+            //sand 
+            ctx.fillStyle = "#FCE166" //color of sand            
+            ctx.fillRect(0, c.height-50, c.width, 50)//sand bar at bottom of sea
+            requestAnimationFrame(draw)
+        }
+        draw()
+        document.addEventListener("keydown", move)
+    </script>
+</html>
