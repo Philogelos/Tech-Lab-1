@@ -1,0 +1,149 @@
+<html>
+    <h1 id="header">Sushi Platformer - Week 5</h1>
+    <canvas id="can" width="1000" height="800" style="border: 5px solid aqua;"></canvas>
+
+<!--     source code window -->
+    
+    <div id="week-5"></div>
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script>
+      $(function() {
+         $("#week-5").load("week-5-source-code.html");	
+      });
+    </script>
+    
+    
+  <script>
+        let c = document.getElementById("can")
+        let ctx = c.getContext("2d")
+
+        let sush = {
+            x: 0,
+            y: 0,
+            w: 50,
+            h: 50,
+            speed: 14,
+            gravity: 4
+
+        }
+        let platformX = [100, 150, 300]
+        let platformY = [600, 500, 400]
+        let platform = {
+            x: 100,
+            y: 600,
+            w: 100,
+            h: 30
+        }
+        let shark = {
+            x: c.width + 100,
+            y: c.height/2,
+            w: 100,
+            h: 50,
+            color: "black",
+            speed: 1
+        }
+
+        let heart = new Image()
+        heart.src = "heart.png"
+
+        function touch(object1, object2){//all objects must have x, y, w, and h
+            if(object1.x + object1.w > object2.x &&
+               object1.x < object2.x + object2.w &&
+               object1.y + object1.h > object2.y &&
+               object1.y < object2.y + object2.h){
+                    return true
+            }
+        }
+        // function add(a, b){
+        //     c = a+b
+        // }
+        function move(e){
+            if(e.key=="w"){
+                sush.y-=sush.speed //sush.y = sush.y - sush.speed
+                sush.gravity = 4
+            }
+            if(e.key=="s"){
+                sush.y+=sush.speed //sush.y = sush.y - sush.speed
+            }
+            if(e.key=="a"){
+                sush.x-=sush.speed //sush.y = sush.y - sush.speed
+                // sush.gravity = 4
+            }
+            if(e.key=="d"){
+                sush.x+=sush.speed //sush.y = sush.y - sush.speed
+            }
+        }
+        // let x = 1
+        // x = add(1, 55)
+        // console.log(x)
+
+        function draw(){
+            ctx.clearRect(0, 0, c.width, c.height)
+            sush.y+=sush.gravity
+
+            if(touch(sush, shark) == true){
+                sush.x = 0
+                sush.y = 0
+            }
+
+
+
+
+            for(let i = 0; i < platformX.length; i++){
+                //land on platform
+                if(sush.x + sush.w > platformX[i] &&
+                sush.x < platformX[i] + platform.w &&
+                sush.y + sush.h < platformY[i] + platform.h &&
+                sush.y + sush.h > platformY[i]){
+                        sush.gravity = 0
+                        sush.y = platformY[i] - sush.h
+                } else{
+                    sush.gravity = 4
+                }
+            }
+            
+            
+
+            if(sush.y > c.height-sush.h-50){ // if Sush falls below sandbar, gravity = 0 
+                sush.gravity = 0
+            }
+
+
+            //sea
+            ctx.fillStyle = "blue"
+            ctx.fillRect(0, 30, c.width, c.height) //sea
+            //platforms
+            ctx.fillStyle = "red" 
+            for(let i = 0; i < platformX.length; i++){
+                ctx.fillRect(platformX[i], platformY[i], platform.w, platform.h)
+            }           
+            
+            
+
+            //sushi guy
+            ctx.fillStyle = "brown"
+            ctx.fillRect(sush.x, sush.y, 50, 50)
+
+            //Shark!
+            ctx.fillStyle = shark.color
+            ctx.fillRect(shark.x, shark.y, shark.w, shark.h)
+            shark.x-=shark.speed
+            if(shark.x + shark.w < 0){
+                shark.x = c.width
+            }
+            // ctx.drawImage(heart, 750 + 50*0, 50, 50, 50)
+            // ctx.drawImage(heart, 750 + 50*1, 50, 50, 50)
+            // ctx.drawImage(heart, 750 + 50*2, 50, 50, 50)
+
+            for(let i = 0; i < 3; i++){
+                ctx.drawImage(heart, 750 + 50*i, 50, 50, 50)
+            } 
+            //sand 
+            ctx.fillStyle = "#FCE166" //color of sand            
+            ctx.fillRect(0, c.height-50, c.width, 50)//sand bar at bottom of sea
+            requestAnimationFrame(draw)
+        }
+        draw()
+        document.addEventListener("keydown", move)
+    </script>
+</html>
