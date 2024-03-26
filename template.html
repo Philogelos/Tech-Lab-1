@@ -1,0 +1,28 @@
+<html>
+    <h1 id="header">Basic Template</h1>
+    <p>In this basic game template we simply draw a red rectangle at (300, 100) of 150 pixels wide and 50 pixels high.
+    <canvas id="can" width="1000" height="800" style="border: 5px solid black;"></canvas>
+  
+    <div id="template"></div>
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script>
+      $(function() {
+         $("#template").load("basic-template-source-code.html");	
+      });
+    </script>
+  
+    <script>
+        let c = document.getElementById("can")
+        let ctx = c.getContext("2d")
+      
+        function draw(){
+            ctx.clearRect(0, 0, c.width, c.height)          
+          
+            ctx.fillStyle = "red"
+            ctx.fillRect(300, 100, 150, 50)
+           
+            requestAnimationFrame(draw)
+        }
+        draw()
+    </script>
+</html>
