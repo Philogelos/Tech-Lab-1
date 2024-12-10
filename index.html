@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Tech Lab - Jerusalem</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background: #f5f5f5;
+            transition: background 0.3s ease-in-out;
+        }
+        header {
+            background: linear-gradient(90deg, #00c6ff, #0072ff);
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+        header h1 {
+            font-size: 3rem;
+            margin: 0;
+            animation: slideIn 1s ease-out;
+        }
+        header nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        header nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+        header nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        header nav ul li a:hover {
+            color: #ffcc00;
+        }
+
+        /* Animations */
+        @keyframes slideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        /* Section Styling */
+        section {
+            padding: 50px 0;
+            text-align: center;
+            transition: padding 0.3s ease;
+        }
+        section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #0072ff;
+            font-weight: bold;
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Button Styling */
+        .btn {
+            display: inline-block;
+            margin: 20px 0;
+            padding: 15px 30px;
+            background: #00c6ff;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+        .btn:hover {
+            background: #0072ff;
+            transform: translateY(-4px);
+        }
+        
+        /* Cards Layout */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .card {
+            background: #fff;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+        }
+        .card:hover {
+            transform: scale(1.05);
+        }
+        .card img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .card h3 {
+            margin-top: 15px;
+            font-size: 1.5rem;
+            color: #0072ff;
+        }
+        .card p {
+            color: #666;
+        }
+
+        /* Contact Section */
+        #contact p {
+            font-size: 1.1rem;
+        }
+        .cta-button {
+            display: inline-block;
+            background-color: #ffcc00;
+            padding: 15px 25px;
+            color: white;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+        .cta-button:hover {
+            background-color: #ff9900;
+        }
+
+        footer {
+            background: #0072ff;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            font-size: 0.9rem;
+        }
+        .footer-links a {
+            color: white;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>The Tech Lab - Jerusalem</h1>
+        <nav>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#courses">Courses</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="https://mail.jerusalemtechlab.org/">Sign in to Email</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="welcome">
+        <div class="container">
+            <h2>Welcome to The Tech Lab!</h2>
+            <p>Explore technology, unlock creativity, and shape the future. Take your first steps toward startup stardom with us!</p>
+            <a href="#courses" class="btn">Get Started</a>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <h2>About Us</h2>
+            <p>We are a coding club in Jerusalem empowering kids to create, innovate, and build with technology. From coding to design, we provide the tools to help young minds thrive.</p>
+        </div>
+    </section>
+
+    <section id="courses">
+        <div class="container">
+            <h2>Our Courses</h2>
+            <p>From game design to web development, our courses are fun, engaging, and designed to make learning exciting. Click on a card to learn more!</p>
+            <div class="cards">
+                <div class="card">
+                    <img src="scratch-tutorials.jpg" alt="Scratch Tutorials">
+                    <h3>Scratch Tutorials</h3>
+                    <p>Coming Soon</p>
+                </div>
+                <div class="card">
+                    <img src="course-placeholder.jpg" alt="Web Development">
+                    <h3>Web Development</h3>
+                    <p>Coming Soon</p>
+                </div>
+                <div class="card">
+                    <img src="course-placeholder.jpg" alt="Game Design">
+                    <h3>Game Design</h3>
+                    <p>Coming Soon</p>
+                </div> 
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <p>Have questions? We’re here to help. Reach out to us for any inquiries or to sign up for our live in-person classes held at schools or your home!</p>
+            <p>Phone: <a href="tel:+972585698696">058-569-8696</a></p>
+            <p>Email: <a href="mailto:pdfreudiger@gmail.com">pdfreudiger@gmail.com</a></p>
+            <a href="mailto:pdfreudiger@gmail.com" class="cta-button">Sign Up for In-Person Classes</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-links">
+            <a href="#about">About</a>
+            <a href="#courses">Courses</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <p>&copy; 2024 The Tech Lab - Jerusalem. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
