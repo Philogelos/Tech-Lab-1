@@ -1,0 +1,68 @@
+/* Apply a nice readable font to the whole page */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f0f8ff; /* soft blue background */
+  color: #333;
+  margin: 40px;
+  line-height: 1.6;
+}
+
+/* Main heading style */
+h1 {
+  color: #2e8b57; /* sea green */
+  text-align: center;
+  font-size: 2.5em;
+  margin-bottom: 0.2em;
+}
+
+/* Subheadings */
+h2 {
+  color: #4682b4; /* steel blue */
+  margin-top: 1.5em;
+  border-bottom: 2px solid #ccc;
+  padding-bottom: 5px;
+}
+
+/* Paragraphs */
+p {
+  background-color: #ffffff;
+  padding: 10px;
+  border-left: 4px solid #87ceeb; /* sky blue accent */
+  margin: 10px 0;
+  border-radius: 4px;
+}
+
+/* Links */
+a {
+  color: #1e90ff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Ordered & Unordered lists */
+ol, ul {
+  background: #fff;
+  padding: 15px 20px;
+  border-radius: 6px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  margin-bottom: 1em;
+}
+
+/* List items */
+li {
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+/* Images */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 15px auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
