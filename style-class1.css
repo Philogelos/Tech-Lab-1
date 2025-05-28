@@ -65,7 +65,7 @@ img {
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
-regular-button {
+.regular-button {
   padding: 10px 15px;
   background-color: #87ceeb; /* sky blue */
   color: white;
@@ -76,7 +76,7 @@ regular-button {
   margin-top: 10px;
 }
 
-regular-button:hover {
+.regular-button:hover {
   background-color: #5aaedc;
 }
 
