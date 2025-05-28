@@ -5,69 +5,7 @@ body {
   color: #333;
   margin: 40px;
   line-height: 1.6;
-}<!-- Essential Tags:
-
-    <html>, <head>, <body>, <title> ✔
-
-    <h1> to <h6> (for headings)  ✔
-
-    <p> (for paragraphs)  ✔
-
-    <a> (for links)  ✔
-
-    <ul>, <ol>, <li> (for lists)
-
-    <img> (for images) ✔
-
-    <br> (for line breaks)  ✔-->  
-
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Class Project 1 HTML fundamentals</title>
-        <link rel="stylesheet" href="style-class1.css">
-    </head>
-    <body>
-        <h1>All about Me!</h1>
-        <h2>Short description</h2>
-        <img src="boy.jpeg" alt="pic of me!">
-        <p>
-            I live in Ramot Bet. <br>
-            I go to <a href="https://www.madlan.co.il/education/school/113563">Noam school</a>  for boys. <br>
-            I love learning code!           
-        </p>
-        
-        <button onclick="alert('I flew once to Thailand!')">Fun fact!</button>
-
-        <h2>My favourite websites!</h2>
-        <p>
-            Heres a list of my favorite websites (in order of favoriteness):
-        </p>
-        <ol>
-            <li><a href="http://poki.com/">Poki Games!</a></li>
-            <li><a href="https://scratch.mit.edu/">Sctratch - code your own Games</a></li>
-            <li><a href="https://workspace.google.com/products/slides/">Google Slides</a></li>
-            <li><a href="https://www.canva.com/">Canva - graphic design</a></li>
-            </ol>       
-
-        <h2>My hobbies!</h2>
-        <ul>
-            <li>Drawing</li>
-            <li>Biking</li>
-            <li>Reading</li>
-            <li>Walking the dog...</li>
-
-            <!-- note alternative way to display img -->
-            <!-- https://img.freepik.com/free-photo/shallow-focus-vertical-shot-cute-golden-retriever-puppy-sitting-grass-ground_181624-27259.jpg?uid=R123196745&ga=GA1.1.2132933730.1734960873&semt=ais_hybrid&w=740 -->
-            <img width="200" src="https://img.freepik.com/free-photo/shallow-focus-vertical-shot-cute-golden-retriever-puppy-sitting-grass-ground_181624-27259.jpg?uid=R123196745&ga=GA1.1.2132933730.1734960873&semt=ais_hybrid&w=740" 
-                alt="A cute dog"> 
-        </ul>        
-    </body>
-    </html>
-
-
+}
 /* Main heading style */
 h1 {
   color: #2e8b57; /* sea green */
@@ -127,7 +65,7 @@ img {
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
-button {
+regular-button {
   padding: 10px 15px;
   background-color: #87ceeb; /* sky blue */
   color: white;
@@ -138,7 +76,7 @@ button {
   margin-top: 10px;
 }
 
-button:hover {
+regular-button:hover {
   background-color: #5aaedc;
 }
 
