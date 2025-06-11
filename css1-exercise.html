@@ -4,8 +4,12 @@
   <meta charset="UTF-8" />
   <title>Simple CSS Button for Kids</title>
   <style>
+    body{
+      text-align: center;
+    }
     /* Style the button */
     .fun-button {
+      display: block;
       color: white;               /* Text color */
       background-color: #4CAF50;  /* Green background */
       padding: 15px 30px;         /* Padding inside button (top/bottom, left/right) */
@@ -21,11 +25,23 @@
     .fun-button:hover {
       background-color: #45a049;
     }
+    .color-div{
+      color: white;               /* Text color */
+      background-color: #4CAF50;  /* Green background */
+      padding: 15px 30px;         /* Padding inside button (top/bottom, left/right) */
+      margin: 20px;               /* Space outside the button */
+      border: none;/* Border color and thickness */
+      border-radius: 12px;        /* Rounded corners */
+      font-size: 20px;            /* Text size */
+      cursor: text;            /* Changes cursor on hover */
+    }
   </style>
 </head>
 <body>
 
   <button class="fun-button">Click Me!</button>
+  <div class="color-div">color: #4CAF50</div>
+  <img src="box-model-for-button.png" alt="box model for button">
 
 </body>
 </html>
